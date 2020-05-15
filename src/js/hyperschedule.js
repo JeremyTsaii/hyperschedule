@@ -103,6 +103,9 @@ const importExportSaveChangesButton = document.getElementById(
 const importExportCopyButton = document.getElementById(
   "import-export-copy-button"
 );
+const importExportEmailButton = document.getElementById(
+  "import-export-email-button"
+);
 
 //// Global state
 
@@ -829,6 +832,7 @@ function attachListeners() {
   );
   courseSearchInput.addEventListener("keyup", handleCourseSearchInputUpdate);
   importExportDataButton.addEventListener("click", showImportExportModal);
+  importExportEmailButton.addEventListener("click", emailSchedule);
   importExportICalButton.addEventListener("click", downloadICalFile);
   importExportSaveChangesButton.addEventListener(
     "click",
@@ -2074,6 +2078,11 @@ function downloadICalFile() {
     }
   }
   cal.download("hyperschedule-export");
+}
+
+function emailSchedule() {
+  console.log(importExportTextArea.value);
+  window.open(`mailto:?subject=Schedule&body=${importExportTextArea.value}`);
 }
 
 /// Startup actions
